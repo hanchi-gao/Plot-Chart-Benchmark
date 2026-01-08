@@ -65,7 +65,7 @@ def create_single_chart(data_dict, y_field, y_label, title):
 
 def create_overview_chart(data_dict):
     """
-    創建總覽圖表（2x2 佈局）
+    創建總覽圖表（2x3 佈局）
 
     Args:
         data_dict: 實驗數據字典 {folder_name: DataFrame}
@@ -76,12 +76,12 @@ def create_overview_chart(data_dict):
     overview_config = CHART_TABS["總覽"]
     charts = overview_config["charts"]
 
-    # 創建 2x2 子圖
+    # 創建 2x3 子圖
     fig = make_subplots(
-        rows=2, cols=2,
+        rows=2, cols=3,
         subplot_titles=[chart["title"] for chart in charts],
-        vertical_spacing=0.12,
-        horizontal_spacing=0.10
+        vertical_spacing=0.15,
+        horizontal_spacing=0.08
     )
 
     # 為每個實驗資料夾分配固定顏色
@@ -92,7 +92,7 @@ def create_overview_chart(data_dict):
     folder_colors = {folder: color_palette[i % len(color_palette)]
                      for i, folder in enumerate(data_dict.keys())}
 
-    positions = [(1, 1), (1, 2), (2, 1), (2, 2)]
+    positions = [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)]
 
     for idx, (chart_config, (row, col)) in enumerate(zip(charts, positions)):
         y_field = chart_config["y_field"]
@@ -127,7 +127,7 @@ def create_overview_chart(data_dict):
         fig.update_yaxes(title_text=y_label, row=row, col=col)
 
     fig.update_layout(
-        height=800,
+        height=900,
         template="plotly_white",
         hovermode='x unified',
     )
