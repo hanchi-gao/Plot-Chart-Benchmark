@@ -58,9 +58,14 @@ Plot-Chart-Benchmark/
 - **AMD Pro/Instinct**: Pro4500, MI350, MI300X
 - **NVIDIA**: H100-SXM, H200-SXM
 
-**重要提示：** `2xR9700_x16_*` 資料夾的測試是在**四卡機上只使用兩張卡**進行的，每張卡享有完整 PCIe x16 頻寬。
+**重要提示：** 以下資料夾的測試是在**四卡機上只使用兩張卡**進行的，每張卡享有完整 PCIe x16 頻寬：
+- `2xR9700_x16_*`
+- `2xpro4500_x16_*`
 
-所有 AMD GPU 測試均使用 ROCm 7.0。
+- AMD GPU 伺服器測試使用 ROCm 7.0
+- AMD GPU 個人電腦測試 (`*_x8_*_rocm7.1_*`) 使用 ROCm 7.1
+- NVIDIA Pro4500 伺服器測試使用 CUDA 13.0
+- NVIDIA Pro4500 個人電腦測試 (`2xpro4500_x8_*`) 使用 CUDA 13.0
 
 ## 數據格式
 
